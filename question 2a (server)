@@ -1,0 +1,19 @@
+import socket
+s = socket.socket()
+print("Socket successfully created")
+port = 6969
+s.bind(("", port))
+print("Socket connection successfull")
+s.listen(5)
+c, addr = s.accept()
+while 1:
+ data1 = c.recv(1024).decode("ascii")
+ if not data1:
+
+  break
+
+ data2 = float(data1)
+ data3 = round((data2 - 32) * 5.0 / 9.0, 2)
+ data4 = str(data3) + " degree Celsius"
+ c.send(data4.encode())
+c.close()
