@@ -1,0 +1,13 @@
+import socket
+
+s = socket.socket()
+
+s.connect(('10.0.2.4', 6969))
+num = float(input("Enter a temperature in Fahrenheit:  "))
+message = str(num)
+s.send(message.encode())
+
+print (s.recv(1024).decode())
+
+s.close()
+
